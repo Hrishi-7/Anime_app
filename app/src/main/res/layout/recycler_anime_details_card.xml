@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="imageUrl"
+            type="String" />
+
+        <variable
+            name="animeName"
+            type="String" />
+
+        <variable
+            name="episodesNumber"
+            type="String" />
+
+        <variable
+            name="rating"
+            type="String" />
+
+        <variable
+            name="animeId"
+            type="Integer" />
+
+        <variable
+            name="callback"
+            type="com.hrishikesh.animeapp.homeFeed.callback.HomeAnimeClickCallback" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> callback.onAnimeClick(animeId)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="20dp"
+            app:cardCornerRadius="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:padding="20dp"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/animeImage"
+                    android:layout_width="80dp"
+                    loadImage="@{imageUrl}"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_height="120dp"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/animeName"
+                    android:layout_width="0dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/animeImage"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="Dragon ball z"
+                    android:text="@{`Anime Name: ` + animeName}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/numberOfImage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    tools:text="50"
+                    android:layout_marginStart="10dp"
+                    android:text="@{`Number of Episodes: ` + episodesNumber}"
+                    app:layout_constraintTop_toBottomOf="@id/animeName"
+                    app:layout_constraintStart_toEndOf="@id/animeImage"
+                    app:layout_constraintEnd_toEndOf="@id/animeName"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/animeRating"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    tools:text="5.2"
+                    android:layout_marginStart="10dp"
+                    android:text="@{rating}"
+                    app:layout_constraintStart_toEndOf="@id/animeImage"
+                    app:layout_constraintTop_toBottomOf="@id/numberOfImage"
+                    app:layout_constraintEnd_toEndOf="@id/numberOfImage"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
